@@ -37,12 +37,12 @@ for (var i = 0; i < rooms.length; i++) {
         if (computedChecksum == checksum) {
             name = matches[1];
             var decode = '';
-            for (var iii = 0; iii < name.length; iii++) {
-                if (name[iii] == '-') {
+            for (var ii = 0; ii < name.length; ii++) {
+                if (name[ii] == '-') {
                     decode += ' ';
                     continue;
                 }
-                var newChar = (((name.charCodeAt(iii) - 97) + sectorID) % 26) + 97;
+                var newChar = (((name.charCodeAt(ii) - 97) + sectorID) % 26) + 97;
                 decode += String.fromCharCode(newChar);
             }
             if (decode.indexOf('north') > -1) {
