@@ -180,18 +180,23 @@ var MD5 = function (string) {
 
 // Beginning of my program
 var input = 'cxdnnyjw';
-var password = '';
 var index = 0;
-var stop = 10000000;
+var stop = 30000000;
+var solution = 2;
 
 console.log('searching ' + index + ' - ' + stop);
-while (password.length < 8) {
+while (index < stop) {
   var hash = MD5(input + index.toString());
   if (hash.substring(0, 5) == '00000') {
-    console.log('found [' + hash.charAt(5) + '] from: ' + input + index.toString() + ' (' + hash + ')');
-    password += hash.charAt(5);
+    if (solution == 1) {
+      console.log('found [' + hash.charAt(5) + ']');
+      console.log('from: ' + input + index.toString() + ' (' + hash + ')');
+    }
+    if (solution == 2 && hash.charAt(5) <= '7') {
+      console.log('found [' + hash.charAt(5) + ':' + hash.charAt(6) + ']');
+      console.log('from: ' + input + index.toString() + ' (' + hash + ')');
+    }
   }
   index++;
-  if (index > stop) break;
 }
 console.log('done');
