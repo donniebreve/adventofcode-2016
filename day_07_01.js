@@ -5,16 +5,24 @@ var inputs = input.split(',');
 var validCount = 0;
 for (var i = 0; i < inputs.length; i++) {
     var ip = inputs[i];
-    var invalidMatch = /\[[^\[\]]*?([a-z])([a-z])\2\1[^\[\]]*?\]/g.exec(ip);
-    if (invalidMatch) {
-        if (invalidMatch[1] != invalidMatch[2]) {
-            continue;
+    // find invalids
+    var match = undefined, invalid = false;
+    var re = /\[[^\[\]]*?([a-z])([a-z])\2\1[^\[\]]*?\]/g;
+    while (match = re.exec(ip)) {
+        if (match[1] != match[2]) {
+            invalid = true;
+            break;
         }
     }
-    var validMatch = /([a-z])([a-z])\2\1/g.exec(ip);
-    if (validMatch) {
-        if (validMatch[1] != validMatch[2]) {
-            validCount++;
+    if (!invalid) {
+        // find valids
+        match = undefined;
+        re = /([a-z])([a-z])\2\1/g;
+        while (match = re.exec(ip)) {
+            if (match[1] != match[2]) {
+                validCount++;
+                break;
+            }
         }
     }
 }
