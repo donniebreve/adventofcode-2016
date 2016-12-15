@@ -5,7 +5,6 @@ var inputs = input.split(',');
 var validCount = 0;
 for (var i = 0; i < inputs.length; i++) {
     var ip = inputs[i];
-    // find invalids
     var match = undefined, invalid = false;
     var re = /\[[^\[\]]*?([a-z])([a-z])\2\1[^\[\]]*?\]/g;
     while (match = re.exec(ip)) {
@@ -15,7 +14,6 @@ for (var i = 0; i < inputs.length; i++) {
         }
     }
     if (!invalid) {
-        // find valids
         match = undefined;
         re = /([a-z])([a-z])\2\1/g;
         while (match = re.exec(ip)) {
