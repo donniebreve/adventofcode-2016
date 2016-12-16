@@ -8,6 +8,7 @@ for (var i = 0; i < inputs.length; i++) {
     var outsides = [];
     var insides = [];
     var isOutside = true;
+    // Parse IP
     for (var ii = 0; ii < ip.length; ii++) {
         if (ip[ii] == '[') {
             isOutside = false;
