@@ -36,8 +36,8 @@ for (var index = 0; index < inputs.length; index++) {
     var rectCommand = /rect ([0-9]+)x([0-9]+)/.exec(command);
     if (rectCommand) {
         console.log(rectCommand);
-        for (var i = 0; i < rectCommand[1]; i++) {
-            for (var ii = 0; ii < rectCommand[2]; ii++) {
+        for (var i = 0; i < parseInt(rectCommand[1]); i++) {
+            for (var ii = 0; ii < parseInt(rectCommand[2]); ii++) {
                 grid[i][ii] = 1;
             }
         }
