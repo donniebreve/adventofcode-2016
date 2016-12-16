@@ -4,7 +4,8 @@ function printGrid(grid) {
     var output = '';
     for (var y = 0; y < grid[0].length; y++) {
         for (var x = 0; x < grid.length; x++) {
-            output += grid[x][y] + ' ';
+            if (grid[x][y] == 1) output += 'X ';
+            else output += '- ';
         }
         output += '\r\n';
     }
@@ -35,7 +36,6 @@ for (var index = 0; index < inputs.length; index++) {
     var command = inputs[index];
     var rectCommand = /rect ([0-9]+)x([0-9]+)/.exec(command);
     if (rectCommand) {
-        console.log(rectCommand);
         for (var i = 0; i < parseInt(rectCommand[1]); i++) {
             for (var ii = 0; ii < parseInt(rectCommand[2]); ii++) {
                 grid[i][ii] = 1;
@@ -44,7 +44,6 @@ for (var index = 0; index < inputs.length; index++) {
     }
     var rotateCommand = /rotate [a-z]+ ([xy])=([0-9]+) by ([0-9]+)/.exec(command);
     if (rotateCommand) {
-        console.log(rotateCommand);
         if (rotateCommand[1] == 'x') {
             var x = parseInt(rotateCommand[2]);
             var rotations = parseInt(rotateCommand[3]);
@@ -72,3 +71,4 @@ for (var index = 0; index < inputs.length; index++) {
     }
 }
 countGrid(grid);
+printGrid(grid);
